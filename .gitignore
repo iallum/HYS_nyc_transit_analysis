@@ -2,6 +2,10 @@
 *.geojson
 *.csv
 *.html
+*.csv.gz
+*.txt
+/census_block_geography
+/nhgis0001_csv
 
 # macOS
 .DS_Store
