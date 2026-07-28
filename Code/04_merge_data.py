@@ -38,11 +38,21 @@ print("merged parks")
 combined = merge_tgt(zoning)
 print("merged zoning")
 
-#combined["grid_distance"] = combined.apply(
-#    lambda row: h3.grid_distance(row["cell_start"], row["cell_end"]),
-#    axis=1,
-#)
-#print("added dists")
+def safe_h3_dist(s, e):                                                                                      
+    if pd.isna(s) or pd.isna(e):                                                                             
+        return None                                                                                          
+    try:                                                                                                     
+        return h3.grid_distance(str(s), str(e))                                                              
+    except Exception:                                                                                        
+        return None                                                                                      
+
+pair_dists = combined[['cell_start', 'cell_end']].drop_duplicates().copy()
+pair_dists['grid_distance'] = [                                                                              
+    safe_h3_dist(s, e)                                                                                       
+    for s, e in zip(pair_dists['cell_start'], pair_dists['cell_end'])                                        
+]    
+combined = combined.merge(pair_dists, on=['cell_start', 'cell_end'], how='left')
+print("added dists")                                                                                                        
 
 combined_pl = pl.from_pandas(combined)
 combined_pl.write_csv('../Intermediate/09_combined_dataset.csv')
