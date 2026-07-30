@@ -230,3 +230,6 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 Data/nyc_open_data/nyc_mappluto_26v1_shp.zip
+
+# Testing
+test/
