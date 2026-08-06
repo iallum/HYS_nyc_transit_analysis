@@ -7,6 +7,7 @@
 census_block_geography/
 nhgis0001_csv/
 data/ # where csv files stored for Citi Bike data
+intermediate/
 
 # macOS
 .DS_Store

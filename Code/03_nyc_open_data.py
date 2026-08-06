@@ -24,11 +24,11 @@ schools_geo['has_school'] = 1
 mapping = {   
     'Early Childhood': 'early_schooling',                                                                                          
     'Elementary': 'elementary_school',
-    'High School': 'high_school',   
+    'High school': 'high_school',   
     'Junior High-Intermediate-Middle':'middle_school',                             
     'K-8': 'k_8_school',                                                                              
     'K-12 all grades': 'k_12_school',   
-    'Seconary School': 'secondary_school',                                                                       
+    'Secondary school': 'secondary_school',                                                                       
     'Ungraded': 'ungraded_school'                                                                        
 }                                                                                                                                                                                                                        
 schools_geo['school_type'] = schools_geo['school_type'].replace(mapping)
